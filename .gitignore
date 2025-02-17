@@ -1,0 +1,32 @@
+# Ignore build directories
+build/
+bin/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+
+# Ignore compiled object files, executables, and libraries
+*.o
+*.obj
+*.so
+*.dylib
+*.exe
+*.a
+*.lib
+*.dll
+
+# Godot 4+ specific ignores
+.godot/
+*.import/
+/android/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore Neovim swap files
+*~
+~.swp
+
+# Ignore logs
+*.log
