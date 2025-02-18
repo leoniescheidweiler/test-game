@@ -19,7 +19,9 @@ include_directories(${GODOT_CPP_PATH}/include)
 set(GODOT_CPP_LIB "${GODOT_CPP_LIB_PATH}/libgodot-cpp.macos.template_release.universal.a")
 
 # Add source files
-add_library(my_game MODULE src/game_loop.cpp)
+add_executable(my_game
+    src/main.cpp
+)
 
 # Link against Godot C++ bindings
 target_link_libraries(my_game PRIVATE ${GODOT_CPP_LIB})
