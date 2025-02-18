@@ -8,20 +8,14 @@ set(CMAKE_LIBRARY_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
-# Find godot-cpp bindings
-set(GODOT_CPP_PATH /Users/leonie/dev/godot-cpp)
-set(GODOT_CPP_LIB_PATH ${GODOT_CPP_PATH}/bin)
-
-# Include the Godot C++ binding headers
-include_directories(${GODOT_CPP_PATH}/include)
-
-# Link the release version of the library
-set(GODOT_CPP_LIB "${GODOT_CPP_LIB_PATH}/libgodot-cpp.macos.template_release.universal.a")
+# sdl2
+find_package(SDL2 REQUIRED)
+include_directories(/opt/homebrew/include/SDL2)
 
 # Add source files
 add_executable(my_game
     src/main.cpp
 )
 
-# Link against Godot C++ bindings
-target_link_libraries(my_game PRIVATE ${GODOT_CPP_LIB})
+# Link SDL2
+target_link_libraries(my_game PRIVATE ${SDL2_LIBRARIES})
