@@ -4,8 +4,7 @@
 #include "controller.hpp"
 #include <vector>
 
-class GameLoop
-{
+class GameLoop {
 public:
     GameLoop() = default;
     ~GameLoop() = default;
