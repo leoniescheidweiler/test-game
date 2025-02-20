@@ -15,6 +15,9 @@ include_directories(/opt/homebrew/include/SDL2)
 # Add source files
 add_executable(my_game
     src/main.cpp
+    src/world_controller.cpp
+    src/world.cpp
+    src/video_controller.cpp
 )
 
 # Link SDL2
