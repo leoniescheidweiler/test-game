@@ -8,7 +8,7 @@ struct Tile {
 };
 
 class World {
-public:
+    public:
     World(int width, int height);
     ~World() = default;
 
@@ -20,9 +20,9 @@ public:
 
     void generate();
 
-private:
+    private:
     int width, height;
     std::vector<std::vector<Tile>> grid;
 };
 
-#endif // !WORLD_HPP
+#endif  // !WORLD_HPP

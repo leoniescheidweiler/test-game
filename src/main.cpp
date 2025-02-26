@@ -1,10 +1,10 @@
+#include <iostream>
 #include "game_loop.hpp"
-#include "world_controller.hpp"
 #include "input_controller.hpp"
 #include "video_controller.hpp"
-#include <iostream>
+#include "world_controller.hpp"
 
-int main(){
+int main() {
     // Create game loop
     GameLoop gameLoop;
 

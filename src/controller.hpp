@@ -2,13 +2,13 @@
 #define CONTROLLER_HPP
 
 class Controller {
-public:
+    public:
     Controller() = default;
     virtual ~Controller() = default;
 
     virtual void update() = 0;
 
-private:
+    private:
 };
 
-#endif // !CONTROLLER_HPP
+#endif  // !CONTROLLER_HPP
