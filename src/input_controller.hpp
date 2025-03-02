@@ -3,12 +3,15 @@
 
 #include <SDL.h>
 #include "controller.hpp"
-#include "video_controller.hpp"
-#include "world_controller.hpp"
+#include "event_controller.hpp"
+// #include "video_controller.hpp"
+// #include "world_controller.hpp"
 
 class InputController : public Controller {
     public:
-    InputController(WorldController& worldController, VideoController& videoController);
+    InputController(  // WorldController& worldController,
+                      // VideoController& videoController,
+        EventController& eventController);
     ~InputController() = default;
 
     // Override the update method from Controller
@@ -17,8 +20,9 @@ class InputController : public Controller {
     void pollInput();
 
     private:
-    WorldController& worldController;
-    VideoController& videoController;
+    // WorldController& worldController;
+    // VideoController& videoController;
+    EventController& eventController;
 };
 
 #endif  // !INPUT_CONTROLLER_HPP

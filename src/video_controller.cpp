@@ -1,9 +1,13 @@
 #include "video_controller.hpp"
 #include <iostream>
+#include "event_controller.hpp"
 #include "world_controller.hpp"
 
-VideoController::VideoController(int screenWidth, int screenHeight, WorldController& worldController)
-    : worldController(worldController) {
+VideoController::VideoController(int screenWidth,
+                                 int screenHeight,
+                                 WorldController& worldController,
+                                 EventController& eventController)
+    : worldController(worldController), eventController(eventController) {
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         std::cerr << "SDL could not initialize! SDL_Error: " << SDL_GetError() << std::endl;
         exit(1);
@@ -24,6 +28,9 @@ VideoController::VideoController(int screenWidth, int screenHeight, WorldControl
         std::cerr << "Renderer could not be created! SDL_Error: " << SDL_GetError() << std::endl;
         exit(1);
     }
+
+    eventController.registerListener("mouse_clicked",
+                                     std::bind(&VideoController::handleMouseClick, this, std::placeholders::_1));
 }
 
 VideoController::~VideoController() {
@@ -61,6 +68,17 @@ void VideoController::update() {
     }
 
     SDL_RenderPresent(renderer);
+}
+
+void VideoController::handleMouseClick(const std::vector<int>& args) {
+    int x = args[0];
+    int y = args[1];
+
+    // TODO: handle UI elements here
+
+    int xTile, yTile;
+    videoCoordToTileCoord(x, y, xTile, yTile);
+    eventController.raiseEvent("tile_clicked", {xTile, yTile});
 }
 
 void VideoController::videoCoordToTileCoord(int xVideo, int yVideo, int& xTile, int& yTile) {

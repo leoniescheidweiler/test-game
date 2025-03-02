@@ -1,4 +1,6 @@
 #include <iostream>
+#include <vector>
+#include "event_controller.hpp"
 #include "game_loop.hpp"
 #include "input_controller.hpp"
 #include "video_controller.hpp"
@@ -8,14 +10,17 @@ int main() {
     // Create game loop
     GameLoop gameLoop;
 
-    WorldController worldController(16, 9);
+    EventController eventController;
+    gameLoop.registerController(&eventController);
+
+    WorldController worldController(16, 9, eventController);
     gameLoop.registerController(&worldController);
 
-    VideoController videoController(640, 480, worldController);
-    gameLoop.registerController(&videoController);
-
-    InputController inputController(worldController, videoController);
+    InputController inputController(eventController);
     gameLoop.registerController(&inputController);
+
+    VideoController videoController(640, 480, worldController, eventController);
+    gameLoop.registerController(&videoController);
 
     gameLoop.start();
 
