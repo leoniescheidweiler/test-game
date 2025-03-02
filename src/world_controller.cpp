@@ -1,7 +1,5 @@
 #include "world_controller.hpp"
-#include <iostream>
 #include "event_controller.hpp"
-#include "video_controller.hpp"
 
 WorldController::WorldController(int width, int height, EventController& eventController)
     : world(width, height), eventController(eventController) {

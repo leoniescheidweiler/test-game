@@ -1,5 +1,3 @@
-#include <iostream>
-#include <vector>
 #include "debug_controller.hpp"
 #include "event_controller.hpp"
 #include "game_loop.hpp"
@@ -8,7 +6,6 @@
 #include "world_controller.hpp"
 
 int main() {
-    // Create game loop
     GameLoop gameLoop;
 
     EventController eventController;
