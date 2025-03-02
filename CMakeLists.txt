@@ -18,6 +18,7 @@ add_executable(my_game
     src/world_controller.cpp
     src/world.cpp
     src/video_controller.cpp
+    src/input_controller.cpp
 )
 
 # Link SDL2

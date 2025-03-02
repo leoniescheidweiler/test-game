@@ -44,15 +44,13 @@ void VideoController::update() {
     SDL_RenderClear(renderer);
 
     // Query world for tile data
-    const auto& grid = worldController.getWorldGrid();
-    int worldWidth = worldController.getWidth();
-    int worldHeight = worldController.getHeight();
+    World& world = worldController.getWorld();
 
-    for (int y = 0; y < worldHeight; y++) {
-        for (int x = 0; x < worldWidth; x++) {
+    for (int x = 0; x < world.getWidth(); x++) {
+        for (int y = 0; y < world.getHeight(); y++) {
             SDL_Rect rect = {x * tileSize, y * tileSize, tileSize, tileSize};
 
-            if (grid[y][x].type == 0) {
+            if (world.getTiletype(x, y) == 0) {
                 SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255);  // Black
             } else {
                 SDL_SetRenderDrawColor(renderer, 255, 255, 255, 255);  // White
@@ -63,4 +61,9 @@ void VideoController::update() {
     }
 
     SDL_RenderPresent(renderer);
+}
+
+void VideoController::videoCoordToTileCoord(int xVideo, int yVideo, int& xTile, int& yTile) {
+    xTile = (int)xVideo / this->tileSize;
+    yTile = (int)yVideo / this->tileSize;
 }

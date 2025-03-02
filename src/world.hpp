@@ -12,13 +12,20 @@ class World {
     World(int width, int height);
     ~World() = default;
 
-    const std::vector<std::vector<Tile>>& getGrid() const { return grid; }
+    std::vector<std::vector<Tile>>& getGrid() { return grid; }
     int getWidth() const { return width; }
     int getHeight() const { return height; }
 
-    const Tile& getTile(int x, int y) const;
+    bool validTileCoords(int x, int y);
 
-    void generate();
+    // Tile& getTile(int x, int y);
+    int getTiletype(int x, int y);
+    void setTiletype(int x, int y, int type);
+    void flipTiletype(int x, int y);
+
+    void generateRandom();
+
+    void printGrid(const std::string& input);
 
     private:
     int width, height;

@@ -11,11 +11,11 @@ int main() {
     WorldController worldController(16, 9);
     gameLoop.registerController(&worldController);
 
-    // InputController inputController;
-    // gameLoop.registerController(&inputController);
-
     VideoController videoController(640, 480, worldController);
     gameLoop.registerController(&videoController);
+
+    InputController inputController(worldController, videoController);
+    gameLoop.registerController(&inputController);
 
     gameLoop.start();
 

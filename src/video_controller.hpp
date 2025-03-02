@@ -11,6 +11,7 @@ class VideoController : public Controller {
     ~VideoController();
 
     void update() override;
+    void videoCoordToTileCoord(int xVideo, int yVideo, int& xTile, int& yTile);
 
     private:
     SDL_Window* window;

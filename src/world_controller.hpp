@@ -9,9 +9,7 @@ class WorldController : public Controller {
     WorldController(int width, int height);
     ~WorldController() = default;
 
-    const std::vector<std::vector<Tile>>& getWorldGrid() const { return world.getGrid(); }
-    int getWidth() const { return world.getWidth(); }
-    int getHeight() const { return world.getHeight(); }
+    World& getWorld() { return world; }
 
     void update() override;
 
