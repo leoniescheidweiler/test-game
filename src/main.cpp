@@ -1,5 +1,6 @@
 #include <iostream>
 #include <vector>
+#include "debug_controller.hpp"
 #include "event_controller.hpp"
 #include "game_loop.hpp"
 #include "input_controller.hpp"
@@ -12,6 +13,9 @@ int main() {
 
     EventController eventController;
     gameLoop.registerController(&eventController);
+
+    DebugController debugController(eventController);
+    gameLoop.registerController(&debugController);
 
     WorldController worldController(16, 9, eventController);
     gameLoop.registerController(&worldController);

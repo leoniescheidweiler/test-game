@@ -16,6 +16,7 @@ include_directories(/opt/homebrew/include/SDL2)
 add_executable(my_game
     src/main.cpp
     src/event_controller.cpp
+    src/debug_controller.cpp
     src/world_controller.cpp
     src/world.cpp
     src/video_controller.cpp
