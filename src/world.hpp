@@ -2,10 +2,7 @@
 #define WORLD_HPP
 
 #include <vector>
-
-struct Tile {
-    int type;
-};
+#include "tile.hpp"
 
 class World {
     public:

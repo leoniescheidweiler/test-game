@@ -17,14 +17,14 @@ int World::getTiletype(int x, int y) {
     if (!validTileCoords(x, y)) {
         throw std::out_of_range("getTiletype: Coordinates out of bounds");
     }
-    return grid[x][y].type;
+    return grid[x][y].getType();
 }
 
 void World::setTiletype(int x, int y, int type) {
     if (!validTileCoords(x, y)) {
         throw std::out_of_range("setTiletype: Coordinates out of bounds");
     }
-    grid[x][y].type = type;
+    grid[x][y].setType(type);
 }
 
 void World::flipTiletype(int x, int y) {
@@ -47,7 +47,7 @@ void World::generateRandom() {
 
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            grid[x][y].type = dist(gen);
+            grid[x][y].setType(dist(gen));
         }
     }
 }
@@ -56,7 +56,7 @@ void World::printGrid(const std::string& input) {
     std::cout << input << std::endl;
     for (int y = 0; y < height; y++) {
         for (int x = 0; x < width; x++) {
-            std::cout << grid[x][y].type;
+            std::cout << grid[x][y].getType();
         }
         std::cout << std::endl;
     }
