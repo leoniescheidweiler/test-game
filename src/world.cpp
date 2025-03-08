@@ -1,12 +1,13 @@
 #include "world.hpp"
 #include <iostream>
 #include <random>
+#include "world_generator.hpp"
 
 World::World(int width, int height) {
     this->width = width;
     this->height = height;
 
-    grid.resize(width, std::vector<Tile>(height, {0}));
+    grid.resize(width, std::vector<Tile>(height, {1}));
 }
 
 bool World::validTileCoords(int x, int y) {
@@ -40,16 +41,9 @@ void World::flipTiletype(int x, int y) {
     }
 }
 
-void World::generateRandom() {
-    std::random_device rd;
-    std::mt19937 gen(rd());
-    std::uniform_int_distribution<int> dist(0, 1);
-
-    for (int y = 0; y < height; y++) {
-        for (int x = 0; x < width; x++) {
-            grid[x][y].setType(dist(gen));
-        }
-    }
+void World::generate() {
+    WorldGenerator worldGenerator;
+    worldGenerator.generateRectangle(*this);
 }
 
 void World::printGrid(const std::string& input) {

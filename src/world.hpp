@@ -20,7 +20,7 @@ class World {
     void setTiletype(int x, int y, int type);
     void flipTiletype(int x, int y);
 
-    void generateRandom();
+    void generate();
 
     void printGrid(const std::string& input);
 

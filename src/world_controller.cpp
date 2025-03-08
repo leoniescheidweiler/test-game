@@ -5,12 +5,10 @@ WorldController::WorldController(int width, int height, EventController& eventCo
     : world(width, height), eventController(eventController) {
     eventController.registerListener("tile_clicked",
                                      std::bind(&WorldController::handleTileClick, this, std::placeholders::_1));
-    world.generateRandom();
+    world.generate();
 }
 
-void WorldController::update() {
-    // Future: Handle tile updates
-}
+void WorldController::update() {}
 
 void WorldController::handleTileClick(const std::vector<int>& args) {
     world.flipTiletype(args[0], args[1]);

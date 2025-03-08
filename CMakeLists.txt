@@ -19,6 +19,7 @@ add_executable(my_game
     src/debug_controller.cpp
     src/world_controller.cpp
     src/world.cpp
+    src/world_generator.cpp
     src/tile.cpp
     src/video_controller.cpp
     src/input_controller.cpp

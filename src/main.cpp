@@ -14,13 +14,13 @@ int main() {
     DebugController debugController(eventController);
     gameLoop.registerController(&debugController);
 
-    WorldController worldController(16, 9, eventController);
+    WorldController worldController(40, 30, eventController);
     gameLoop.registerController(&worldController);
 
     InputController inputController(eventController);
     gameLoop.registerController(&inputController);
 
-    VideoController videoController(640, 480, worldController, eventController);
+    VideoController videoController(40 * 32, 30 * 32, worldController, eventController);
     gameLoop.registerController(&videoController);
 
     gameLoop.start();
